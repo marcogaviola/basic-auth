@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <router-view />
+      <vue-router />
     </v-main>
   </v-app>
 </template>
