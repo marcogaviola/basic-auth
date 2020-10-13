@@ -46,6 +46,16 @@
               @click="login"
               >Login</v-btn
             >
+            <v-divider></v-divider>
+            <span class="mx-auto my-3 d-block">No account yet?</span>
+            <v-btn
+              large
+              color="#15587B"
+              class="mx-auto mb-7 px-8 d-block"
+              dark
+              @click="$router.push({ name: 'register' })"
+              >Sign Up</v-btn
+            >
           </v-card-actions>
         </v-card>
       </v-card>
@@ -79,6 +89,11 @@ export default {
       ],
       resetLoader: false,
     };
+  },
+  created() {
+    if (localStorage.getItem("token")) {
+      this.$router.push("dashboard");
+    }
   },
   mounted() {
     if (this.$route.query.error) {

@@ -97,6 +97,11 @@ export default {
       success: false,
     };
   },
+  created() {
+    if (localStorage.getItem("token")) {
+      this.$router.push("dashboard");
+    }
+  },
   methods: {
     ...mapActions({
       registerApi: "user/register",
@@ -118,6 +123,10 @@ export default {
               this.alert.message = "Success!";
               this.$refs.userreg.reset();
               this.loading = false;
+              let _ = this;
+              setTimeout(() => {
+                _.$router.push({ name: "dashboard" });
+              }, 1500);
             }
           })
           .catch(() => {
