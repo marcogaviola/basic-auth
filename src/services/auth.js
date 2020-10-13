@@ -9,4 +9,7 @@ export default {
   verify: (payload) => {
     return Api().post('auth/verify', payload)
   },
+  isLoggedIn: () => {
+    return Api().get('auth/me')
+  }
 }

@@ -9,15 +9,19 @@ export default {
   namespaced: true,
   state: getDefaultState(),
   actions: {
-    async register({ commit }, payload) {
+    async register({ }, payload) {
       const { data } = await Auth.register(payload)
       return data
     },
     async login({ commit }, payload) {
-      const data = await Auth.login(payload)
+      const { data } = await Auth.login(payload);
+      if (data.http_status === 200) {
+        commit('SET_USER', data.data.user)
+        localStorage.setItem("token", data.data.access_token);
+      }
       return data
     },
-    async verify({ commit }, payload) {
+    async verify({ }, payload) {
       const data = await Auth.verify(payload)
       return data
     }

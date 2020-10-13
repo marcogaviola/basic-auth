@@ -45,7 +45,7 @@ export default () => {
     }
   );
   if (localStorage.getItem('token')) {
-    instance.defaults.headers.common['Authorization'] = "bearer " + localStorage.getItem('token');
+    instance.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem('token');
   }
 
   return instance;
